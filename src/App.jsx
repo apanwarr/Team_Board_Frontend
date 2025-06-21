@@ -30,6 +30,11 @@ function App() {
     fetchBoards();
   };
 
+  const handleBoardDelete = () => {
+    setSelectedBoard(null);
+    fetchBoards();
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
@@ -45,7 +50,7 @@ function App() {
           <button type="submit" className="create-btn">Create</button>
         </form>
         <div className="board-list">
-          {boards.map((board) => (
+          {Array.isArray(boards) ? boards.map((board) => (
             <div
               key={board._id}
               className={`sidebar-item ${selectedBoard?._id === board._id ? 'active' : ''}`}
@@ -53,12 +58,14 @@ function App() {
             >
               {board.name}
             </div>
-          ))}
+          )) : (
+            <p className="error-msg">Error loading boards</p>
+          )}
         </div>
       </div>
       <div className="main-view">
         {selectedBoard ? (
-          <BoardView board={selectedBoard} />
+          <BoardView board={selectedBoard} onBoardDelete={handleBoardDelete} />
         ) : (
           <p className="placeholder">Select a board to view tasks</p>
         )}

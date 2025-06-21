@@ -1,42 +1,41 @@
 .app {
   display: flex;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   flex-direction: row;
+  background-color: #f5f7fa;
 }
 
-/* ✅ Updated sidebar */
 .sidebar {
-  width: 220px;
+  width: 250px;
   background: #ffffff;
-  padding: 15px;
+  padding: 20px;
   border-right: 1px solid #e0e0e0;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #2c3e50;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 
-/* ✅ Updated sidebar items */
 .sidebar-item {
-  margin: 6px 0;
-  padding: 10px 12px;
-  background: #f4f4f4;
+  margin: 8px 0;
+  padding: 12px 16px;
+  background: #f7f9fc;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: all 0.2s ease;
   font-weight: 500;
-  color: #333;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
+  color: #34495e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-item:hover {
-  background: #e4e4e4;
+  background: #e3eaf3;
   transform: scale(1.02);
 }
 
@@ -45,15 +44,14 @@
   color: white;
   font-weight: bold;
   transform: scale(1.02);
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
 .board-view {
   flex: 1;
-  display: flex;
-  justify-content: space-around;
   padding: 20px;
-  background-color: #fafafa;
+  background-color: #f9fafa;
+  display: flex;
   flex-direction: column;
 }
 
@@ -61,35 +59,41 @@
   flex: 1;
   margin: 10px;
   background-color: #ffffff;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  min-height: 200px;
 }
 
 .task-card {
-  background-color: #f9f9f9;
+  background-color: #f4f6f8;
   margin: 10px 0;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: grab;
 }
 
 .task-form {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 12px;
   border-bottom: 1px solid #ccc;
   background: #fff;
   margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .task-form input,
 .task-form select {
-  padding: 6px;
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1 1 150px;
+  border-radius: 5px;
+  flex: 1 1 160px;
+  font-size: 14px;
 }
 
 .columns {
@@ -112,13 +116,14 @@
 
 .modal-content {
   background: #fff;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  border-radius: 5px;
+  gap: 12px;
+  border-radius: 8px;
   width: 90%;
-  max-width: 400px;
+  max-width: 420px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .badge.low { color: green; }
@@ -127,26 +132,27 @@
 
 .board-form {
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 15px;
   flex-wrap: wrap;
 }
 
 .board-form input {
-  flex: 1 1 150px;
-  padding: 6px;
+  flex: 1 1 160px;
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .board-form button {
-  padding: 6px 12px;
+  padding: 8px 14px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   white-space: nowrap;
+  transition: background 0.3s;
 }
 
 .board-form button:hover {
@@ -156,7 +162,7 @@
 .board-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .main-view {
@@ -168,12 +174,11 @@
 
 .placeholder {
   font-size: 18px;
-  color: gray;
+  color: #7f8c8d;
   text-align: center;
   margin-top: 50px;
 }
 
-/* 🔁 Responsive for smaller screens */
 @media (max-width: 768px) {
   .app {
     flex-direction: column;
@@ -199,15 +204,32 @@
   }
 }
 
-.task-column {
-  min-height: 200px;
-}
-.task-card {
-  cursor: grab;
-}
-
 .task-actions {
   display: flex;
   gap: 10px;
   margin-top: 5px;
+}
+
+.delete-board-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.delete-board-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.delete-board-btn:active {
+  background-color: #a71d2a;
+  transform: translateY(0);
 }

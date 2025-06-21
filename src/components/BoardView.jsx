@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function BoardView({ board }) {
+function BoardView({ board, onBoardDelete }) {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({
     title: '',
@@ -15,9 +15,11 @@ function BoardView({ board }) {
   const statuses = ['To Do', 'In Progress', 'Done'];
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/boards/${board._id}/tasks`)
-      .then(res => res.json())
-      .then(setTasks);
+    if (board) {
+      fetch(`${import.meta.env.VITE_API_URL}/boards/${board._id}/tasks`)
+        .then(res => res.json())
+        .then(setTasks);
+    }
   }, [board]);
 
   const handleCreate = async () => {
@@ -39,7 +41,7 @@ function BoardView({ board }) {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/boards/${board._id}`, {
       method: 'DELETE'
     });
     setTasks(prev => prev.filter(task => task._id !== id));
@@ -57,9 +59,29 @@ function BoardView({ board }) {
     setEditTask(null);
   };
 
+  const handleBoardDelete = async () => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this board?');
+    if (!confirmDelete) return;
+
+    await fetch(`${import.meta.env.VITE_API_URL}/boards/${board._id}`, {
+      method: 'DELETE'
+    });
+
+    if (typeof onBoardDelete === 'function') {
+      onBoardDelete(board._id);
+    }
+  };
+
   return (
     <div className="board-view">
-      {/* Create Form */}
+      <button
+        className="delete-board-btn"
+        style={{ backgroundColor: 'crimson', color: 'white', marginBottom: '10px' }}
+        onClick={handleBoardDelete}
+      >
+        Delete This Board
+      </button>
+
       <div className="task-form">
         <input placeholder="Title" value={newTask.title} onChange={e => setNewTask({ ...newTask, title: e.target.value })} />
         <input placeholder="Description" value={newTask.description} onChange={e => setNewTask({ ...newTask, description: e.target.value })} />
@@ -76,7 +98,6 @@ function BoardView({ board }) {
         <button onClick={handleCreate}>Create</button>
       </div>
 
-      {/* Task Columns */}
       <div className="columns">
         {statuses.map(status => (
           <div key={status} className="task-column">
@@ -88,7 +109,6 @@ function BoardView({ board }) {
                 <p><strong>Assigned To:</strong> {task.assignedTo}</p>
                 <p><strong>Due:</strong> {task.dueDate?.slice(0, 10)}</p>
                 <span className={`badge ${task.priority.toLowerCase()}`}>{task.priority}</span>
-                <br />
                 <div className="task-actions">
                   <button onClick={() => setEditTask(task)}>Edit</button>
                   <button onClick={() => handleDelete(task._id)}>Delete</button>
