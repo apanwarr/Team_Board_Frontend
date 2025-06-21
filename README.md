@@ -85,6 +85,19 @@ cd team-board-frontend
 <a href="https://team-board-frontend.onrender.com" target="_blank">https://team-board-frontend.onrender.com</a>
 </p>
 
+<h2>Screenshots</h2>
+
+![1](https://github.com/user-attachments/assets/b16573b2-956e-4936-b1bf-db389e839fcc)
+![2](https://github.com/user-attachments/assets/0b286aff-35e9-4b35-9008-186996ee7b65)
+![3](https://github.com/user-attachments/assets/e01e9f14-0097-424f-b2c8-080d586c5cef)
+![4](https://github.com/user-attachments/assets/120312bb-a784-4098-b99d-67ac2c94d48e)
+![5](https://github.com/user-attachments/assets/eaef6230-4a43-4eb9-adf7-818bd94b4277)
+![6](https://github.com/user-attachments/assets/be13a324-be20-4605-b385-0a0b9af48ccb)
+![7](https://github.com/user-attachments/assets/5aaf7af9-e442-4a57-8471-54d5484956ea)
+![8](https://github.com/user-attachments/assets/2af15c92-ce1a-4efd-9f60-18d07743c44f)
+![9](https://github.com/user-attachments/assets/a216f7a2-f40e-4de5-830f-242c540f7982)
+![10](https://github.com/user-attachments/assets/b8c3d6dd-b9ee-4772-a510-3c68f2e5f0c8)
+
 <hr>
 
 <h2>🌟 Bonus Features</h2>
